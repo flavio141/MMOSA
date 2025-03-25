@@ -1,0 +1,51 @@
+{
+    // Usare IntelliSense per informazioni sui possibili attributi.
+    // Al passaggio del mouse vengono visualizzate le descrizioni degli attributi esistenti.
+    // Per altre informazioni, visitare: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Survival Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/kaplan.py",
+            "console": "integratedTerminal",
+            "args": ["--trials", "100"],
+            "justMyCode": false
+        },
+        {
+            "name": "RealSurv Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "utils/real_surv.py",
+            "console": "integratedTerminal",
+            "args": ["--trials", "1000"],
+            "justMyCode": false
+        },
+        {
+            "name": "Optuna Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/optuna_survival.py",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Patching",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/extract_patches.py",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Multiomics",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "utils/surv_integration.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": ["--trials", "1000"]
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+# To Ignore
+checkpoints
+checkpoints_images
+explainability
+dataset/*
+dataset_multiomics/*
+features_dino
+features_dino_not_norm
+features_giga
+logs
+model_dino
+models/*
+notebook/matrix
+old_he
+old_he_mgg
+optuna
+processed_images
+result_dir
+results_multiomics
+splits
+utils/__pycache__
+venvUpdate
+wsi_utils/__pycache__
+
+# To Keep
+!explainability/config_template.yaml
+!explainability/create_heatmaps.py
+!explainability/heatmap_utils.py
+!explainability/shap_explainability.py
+!models/losses_dataset.py
+!models/models_omics.py
+!models/models.py

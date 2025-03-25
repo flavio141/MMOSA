@@ -1,0 +1,25 @@
+folders:
+  patches: patches
+  masks: masks
+  stitches: stitches
+
+seg_params:
+  seg_level: -1 
+  mthresh: 7
+  kernel_size: 2
+  use_otsu: True
+  keep_ids: None
+  exclude_ids: None
+
+filter_params:
+  a_t: 1
+  a_h: 1
+  max_n_holes: 2
+    
+vis_params:
+  vis_level: -1
+  line_thickness: 50
+
+patch_params:
+  use_padding: True
+  contour_fn: 'four_pt'
