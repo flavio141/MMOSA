@@ -1,4 +1,4 @@
-# MultiModal
+# Multi-MOdal Survival Attention (MMOSA) deep learning algorithm
 
 This repository contains the code for an AI model designed to perform multiomic analysis on a leukemia datasets. The model is trained to predict survival outcomes based on multiomic data. 
 
@@ -11,10 +11,10 @@ This repository contains the code for an AI model designed to perform multiomic 
 ## Prerequisites & Configuration
 To use the model, follow these steps:
 
-1. Make sure you have **Python 3.10** installed on your system;
+1. Make sure you have at least **Python 3.10** installed on your system (it was tested on python 3.8.10 too, but some libraries require more advanced python);
 2. Clone this repository with the command:
 ```bash
-git clone https://github.com/esauta/MultiModal.git
+git clone https://github.com/flavio141/MMOSA.git
 ```
 3. You need to create a python environment and to activate it in order to install all the packages;
 4. Install openslide by selecting the correct distribution at the link: https://openslide.org/download/ ;
