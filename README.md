@@ -11,7 +11,7 @@ This repository contains the code for an AI model designed to perform multiomic 
 ## Prerequisites & Configuration
 To use the model, follow these steps:
 
-1. Make sure you have at least **Python 3.10** installed on your system (it was tested on python 3.8.10 too, but some libraries require more advanced python);
+1. Make sure you have at least **Python 3.11.5** installed on your system (it was tested on python 3.8.10 too, but it is better to update some libreries that requires python 3.10);
 2. Clone this repository with the command:
 ```bash
 git clone https://github.com/flavio141/MMOSA.git

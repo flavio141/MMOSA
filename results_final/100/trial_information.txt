@@ -1,0 +1,41 @@
+Model Information
+
+Epochs --> 30
+Features --> features_dino
+Model Architecture --> ModelSurvCustom(
+  (attention_net): MultiheadAttention(
+    (out_proj): NonDynamicallyQuantizableLinear(in_features=1024, out_features=1024, bias=True)
+  )
+  (pool): AdaptiveAvgPool1d(output_size=1)
+  (surv_layers): ModuleList(
+    (0): Linear(in_features=1024, out_features=64, bias=True)
+    (1): Linear(in_features=64, out_features=1, bias=True)
+  )
+  (dropout_coxnet): Dropout(p=0.4, inplace=False)
+)
+Optimizer --> Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    initial_lr: 1e-05
+    lr: 1e-05
+    maximize: False
+    weight_decay: 1e-05
+)
+Loss Function --> <function cox_ph_loss at 0x7f7956a2b560>
+Scheduler --> <torch.optim.lr_scheduler.CosineAnnealingLR object at 0x7f7956a69750>
+
+Dataset Information
+
+Dataset --> features_dino
+Outcome --> Outcome at last FU
+
+Argoments Information
+
+Args --> Namespace(outcome='Outcome at last FU', time='OS censored at TPX  months', logs='logs', trials=100, epochs=30, features='features_dino')
+

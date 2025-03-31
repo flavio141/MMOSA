@@ -433,6 +433,56 @@ class ModelSurv(nn.Module):
         return risk
 
 
+
+def create_padding_mask(mask, seq_len):
+    batch_size = mask.size(0)
+    mask_expanded = torch.arange(seq_len, device=mask.device).expand(batch_size, seq_len)
+    key_padding_mask = mask_expanded >= mask.unsqueeze(1)
+    return key_padding_mask
+    
+
+class ModelSurvCustom(nn.Module):
+    def __init__(self, input_size, dropout, surv_nodes):
+        super(ModelSurvCustom, self).__init__()
+        self.attention_net = nn.MultiheadAttention(embed_dim=input_size, num_heads=2, dropout=dropout, batch_first=True)
+
+        self.pool = nn.AdaptiveAvgPool1d(1)
+
+        self.surv_dims = surv_nodes
+        self.surv_layers = nn.ModuleList()
+        self.dropout_coxnet = nn.Dropout(dropout)
+
+        for i in range(len(self.surv_dims) - 1):
+            self.surv_layers.append(nn.Linear(self.surv_dims[i], self.surv_dims[i+1]))
+
+
+    def coxnet(self, x_concat):
+        for i, layer in enumerate(self.surv_layers):
+            x_concat = layer(x_concat)
+            x_concat = nn.LeakyReLU()(x_concat)
+            if i != len(self.surv_layers) - 1:
+                x_concat = self.dropout_coxnet(x_concat)
+
+        risk = torch.exp(x_concat)
+        return risk
+
+
+    def forward(self, x):
+        x = x.permute(0, 2, 1)
+        x = self.pool(x)
+        x = x.permute(0, 2, 1)
+
+        A, _ = self.attention_net(x, x, x, need_weights=False)
+        #x = torch.mean(A, dim=0, keepdim=True)
+        #x = torch.cat(A, dim=0)
+
+        #del A
+        torch.cuda.empty_cache()
+
+        risk = self.coxnet(A)
+        return risk
+
+
 class MultiHeadAttentionCustom(nn.Module):
     def __init__(self, hidden_size, num_heads, dropout):
         super(MultiHeadAttentionCustom, self).__init__()

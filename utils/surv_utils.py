@@ -18,7 +18,7 @@ from sklearn.decomposition import PCA
 
 from focal_loss.focal_loss import FocalLoss
 from losses_dataset import NLLSurvLoss, CensoredCrossEntropyLoss, CoxLoss
-from models import CoxPH, Model2, ModelAtt, EasyModel
+from models import Model2
 
 
 tl.set_backend('pytorch')
@@ -28,20 +28,20 @@ torch.set_num_threads(100)
 dataHum = pd.read_csv('dataset/MultiomicsFinal.csv', index_col='ID')
 
 
-def generate_mapping(args):
+def generate_mapping(args, indexes):
     mapping = {}
+    slides_features = os.listdir(args.features)
 
-    for id in dataHum.index:
-        slides_features = os.listdir(args.features)
-        
+    for id in indexes:
         if "_dp" in id:
             id = id[:-3]
         
-        mapping[id] = []
+        if id not in list(mapping.keys()):
+            mapping[str(id)] = []
 
         for slide in slides_features:
-            if (os.path.join(args.features, slide).endswith('.pt')) and (id == slide.split('_')[0]):
-                mapping[id].append(slide)
+            if (os.path.join(args.features, slide).endswith('.pt')) and (str(id) == str(slide.split('_')[0])):
+                mapping[str(id)].append(slide)
 
     return {k: v for k, v in mapping.items() if len(v) != 0}
 

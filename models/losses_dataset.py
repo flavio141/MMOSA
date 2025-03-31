@@ -23,6 +23,31 @@ class SurvivalDataset(Dataset):
         return self.name[idx], self.features[idx], self.times[idx], self.real_times[idx], self.event_indicators[idx], self.masking[idx]
 
 
+class SurvivalDatasetModified(Dataset):
+    def __init__(self, features, labels, times, args):
+        self.features = features
+        self.labels = labels
+        self.times = times
+        self.patient_ids = list(features.keys())
+
+        self.args = args
+        
+    def __len__(self):
+        return len(self.features)
+    
+    def __getitem__(self, idx):
+        patient_id = self.patient_ids[idx]
+        patient_data = self.features[patient_id]
+        stainings = None
+
+        for image in patient_data:
+            if stainings is None:
+                stainings = torch.load(os.path.join(self.args.features, image))
+            else:
+                stainings = torch.cat((stainings, torch.load(os.path.join(self.args.features, image))), dim=0)
+        
+        return stainings, self.times[patient_id], self.labels[patient_id]
+
 
 class MultiomicsDataset(Dataset):
     def __init__(self, data_dict, rows=15000):
