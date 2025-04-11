@@ -31,7 +31,7 @@ class SurvivalDatasetModified(Dataset):
         self.patient_ids = list(features.keys())
 
         self.args = args
-        
+      
     def __len__(self):
         return len(self.features)
     

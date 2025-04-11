@@ -426,9 +426,9 @@ class ModelSurv(nn.Module):
                 del A
                 torch.cuda.empty_cache()
 
-        x_att = torch.cat(attention, dim=0)
-
-        risk = self.coxnet(x_att)
+        x = torch.cat(attention, dim=0)
+        del attention
+        risk = self.coxnet(x)
 
         return risk
 

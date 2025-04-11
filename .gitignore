@@ -1,12 +1,13 @@
 # To Ignore
 checkpoints
 checkpoints_images
-explainability
+explainability/*
 dataset/*
 dataset_multiomics/*
 features_dino
 features_dino_not_norm
 features_giga
+features_resnet
 logs
 model_dino
 models/*

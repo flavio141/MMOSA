@@ -1,6 +1,6 @@
 Model Information
 
-Epochs --> 30
+Epochs --> 50
 Features --> features_dino
 Model Architecture --> ModelSurvCustom(
   (attention_net): MultiheadAttention(
@@ -27,8 +27,8 @@ Parameter Group 0
     maximize: False
     weight_decay: 1e-05
 )
-Loss Function --> <function cox_ph_loss at 0x7f7956a2b560>
-Scheduler --> <torch.optim.lr_scheduler.CosineAnnealingLR object at 0x7f7956a69750>
+Loss Function --> <function cox_ph_loss at 0x7fc7f38ab560>
+Scheduler --> <torch.optim.lr_scheduler.CosineAnnealingLR object at 0x7fc7b053b450>
 
 Dataset Information
 
@@ -37,5 +37,5 @@ Outcome --> Outcome at last FU
 
 Argoments Information
 
-Args --> Namespace(outcome='Outcome at last FU', time='OS censored at TPX  months', logs='logs', trials=100, epochs=30, features='features_dino')
+Args --> Namespace(outcome='Outcome at last FU', time='OS censored at TPX  months', logs='logs', trials=100, epochs=50, features='features_dino')
 

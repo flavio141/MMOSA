@@ -41,12 +41,12 @@ parser.add_argument('--time', type=str, default='OS censored at TPX  months', he
 
 parser.add_argument('--logs', type=str, default='logs', help='The folder for the Tensorboard results')
 parser.add_argument('--trials', type=int, default=100, required=False, help='The trials that we are trying')
-parser.add_argument('--epochs', type=int, default=30, help='The number of epochs for training')
+parser.add_argument('--epochs', type=int, default=50, help='The number of epochs for training')
 parser.add_argument('--features', type=str, default='features_dino', help='Folder for the features')
 
 
 def collate_fn(batch):
-    batch = [f for f in batch if f[0].shape[0] <= 28000]
+    batch = [f for f in batch if f[0].shape[0] <= 20000]
 
     if len(batch) == 0:
         return None, None, None, None
