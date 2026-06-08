@@ -45,7 +45,7 @@ parser.add_argument('--normalize', type=str, default=False, help='select why ser
 parser.add_argument('--use_normalized', type=bool, default=False, help='use normalized images for feature extraction')
 
 
-os.environ['HF_TOKEN'] = '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'
+os.environ['HF_TOKEN'] = ''
 
 
 def create_features_dino(args, slide, model, trsforms):    
