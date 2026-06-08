@@ -31,7 +31,7 @@ parser.add_argument('--eliminate', type=bool, default=False, help='eliminate the
 parser.add_argument('--stained', type=bool, default=False, help='normalize the stained image')
 
 
-os.environ['HF_TOKEN'] = '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'
+os.environ['HF_TOKEN'] = ''
 
 #@jit(nopython=False)
 def create_features(args, h5_path, slide, wsi, model, trsforms):
